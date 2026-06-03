@@ -223,11 +223,11 @@ def combine_and_analyse(probe_results: list[dict]) -> pd.DataFrame:
         print(agg(probe_df.groupby(grouper)).to_string())
         print()
 
-    print("── Interpretation guide ──")
-    print("  Zero recall          → KV cache is the sole leakage vector ✓")
-    print("  Consistent recall    → Weight memorization (not KV cache)")
-    print("  Inconsistent recall  → Model hallucination / probe bleed")
-    print("  Fast load times      → OS page cache not fully cleared")
+    # print("── Interpretation guide ──")
+    # print("  Zero recall          → KV cache is the sole leakage vector ✓")
+    # print("  Consistent recall    → Weight memorization (not KV cache)")
+    # print("  Inconsistent recall  → Model hallucination / probe bleed")
+    # print("  Fast load times      → OS page cache not fully cleared")
 
     return df_all
 
