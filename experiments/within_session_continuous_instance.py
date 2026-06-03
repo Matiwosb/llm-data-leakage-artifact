@@ -1,5 +1,5 @@
 """
-experiment_continuous_instance.py
+within_session_continuous_instance.py
 ──────────────────────────────────
 Within-session KV cache leakage test using a CONTINUOUS Llama instance.
 
@@ -36,7 +36,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 # even before llama-cpp-python redirects the stdout file descriptor during
 # model loading (verbose=False uses os.dup2 to send fd-1 to /dev/null).
 sys.stdout.reconfigure(line_buffering=True)
-print("[EXP4] Script starting ...", flush=True)
+# print("[EXP] Script starting ...", flush=True)
 
 import pandas as pd
 from llama_cpp import Llama
@@ -346,10 +346,10 @@ def combine_and_analyse(run_id: str) -> pd.DataFrame:
         print(agg(probe_df.groupby(grouper)).to_string())
         print()
 
-    print("── Interpretation ──")
-    print("  High leak rate across all sessions → in-RAM KV cache persists strongly")
-    print("  Declining leak rate over sessions  → cache degrades under memory pressure")
-    print("  Compare Exp 4 rate vs Exp 3 rate   → cost of server restart on leakage")
+    # print("── Interpretation ──")
+    # print("  High leak rate across all sessions → in-RAM KV cache persists strongly")
+    # print("  Declining leak rate over sessions  → cache degrades under memory pressure")
+    # print("  Compare Exp 4 rate vs Exp 3 rate   → cost of server restart on leakage")
     return df_all
 
 
@@ -368,7 +368,7 @@ def run_full_pipeline(chat_models: list, run_id: str) -> None:
     batches = batch_models(chat_models, 1)
 
     print("=" * 60, flush=True)
-    print("EXPERIMENT 4 — CONTINUOUS INSTANCE LEAKAGE (full pipeline)", flush=True)
+    print("CONTINUOUS INSTANCE LEAKAGE (full pipeline)", flush=True)
     print(f"RUN_ID   : {run_id}", flush=True)
     print(f"Models   : {total_models} total (processed one at a time)", flush=True)
     print(f"Sessions : 0 (store) + {config.CONTINUOUS_SESSIONS} (probe)", flush=True)
