@@ -42,20 +42,20 @@ TARGET_FILENAMES = {
 
 ### 2. Run experiments
 
-All scripts are run from the `Oraginized_version/` directory.
+All scripts are run from the `experiments/` directory.
 
 ```bash
-cd Oraginized_version/
+cd experiments/
 
 # Experiment 1 — Within-session leakage
 # Loads the model fresh each session; store phase then probe phase in the same context.
 # Runs NUM_SESSIONS sessions spaced WITHIN_WAIT_SECONDS apart (default: 5 sessions × 1 hour).
-python experiments/within_session_continuous_instance.py
+python within_session_continuous_instance.py
 
-# Cache-cleared cross-session control (baseline)
+# Cache-cleared cross-session control
 # Session 0 stores PII, then ALL caches are wiped; sessions 1–5 probe with a fresh model.
 # Any leakage here points to weight memorization, not KV persistence.
-python experiments/cache_cleared_cross_session_control.py 
+python cache_cleared_cross_session_control.py 
 
 # Optional: drop OS page cache between sessions for stronger isolation
 SUDO_PASSWORD=mypass python experiments/cache_cleared_cross_session_control.py 
@@ -75,7 +75,7 @@ A combined `*_combined_<run_id>.csv` is written at the end of each run.
 
 ### 4. Google Drive upload (optional)
 
-Place `credentials.json` (Google OAuth 2.0) in the `Oraginized_version/` directory.
+Place `credentials.json` (Google OAuth 2.0) in the directory.
 Results are uploaded automatically at the end of each run.
 To target a specific Drive folder, set the `GDRIVE_FOLDER_ID` environment variable:
 
