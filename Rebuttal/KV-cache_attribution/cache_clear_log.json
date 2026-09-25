@@ -1,0 +1,37 @@
+{
+  "timestamp": "2026-04-13 13:51:06",
+  "actions": [
+    {
+      "msg": "gc.collect() done",
+      "status": "ok"
+    },
+    {
+      "msg": "torch CUDA cleared",
+      "status": "ok"
+    },
+    {
+      "msg": "Cleared: results/kv_states",
+      "status": "ok"
+    },
+    {
+      "msg": "Not found (already clean): results/llama_prompt_cache",
+      "status": "skip"
+    },
+    {
+      "msg": "Not found (already clean): /home/mbirbo1/.cache/llama_cpp",
+      "status": "skip"
+    },
+    {
+      "msg": "Not found (already clean): /tmp/__pycache__",
+      "status": "skip"
+    },
+    {
+      "msg": "OS page cache dropped",
+      "status": "ok"
+    },
+    {
+      "msg": "KV_STATE_DIR is clean",
+      "status": "ok"
+    }
+  ]
+}
